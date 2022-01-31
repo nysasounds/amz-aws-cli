@@ -1,0 +1,62 @@
+name: amz-aws-cli
+base: core20
+summary: Universal Command Line Interface for Amazon Web Services
+description: |
+  Universal Command Line Interface for Amazon Web Services
+  The AWS Command Line Interface (CLI) is a unified tool to
+  manage your AWS services. With just one tool to download
+  and configure, you can control multiple AWS services from
+  the command line and automate them through scripts.
+
+  The AWS CLI v2 offers several new features including improved
+  installers, new configuration options such as AWS Single Sign-On (SSO),
+  and various interactive features. 
+confinement: strict
+grade: stable
+adopt-info: aws
+
+apps:
+  aws:
+    command: bin/aws
+    aliases:
+      - amz-aws-cli
+    environment:
+      GROFF_FONT_PATH: "$SNAP/usr/share/groff/current/font"
+      GROFF_TMAC_PATH: "$SNAP/usr/share/groff/current/tmac"
+    completer: bin/aws_completion
+    plugs:
+      - network
+      - network-bind
+      - home-aws-conf
+      - home
+
+plugs:
+  home-aws-conf:
+    interface: personal-files
+    write:
+    - $HOME/.aws
+
+parts:
+  aws:
+    plugin: nil
+    source: https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.4.13.zip
+    source-type: zip
+    override-build: |
+      $SNAPCRAFT_PART_BUILD/aws/install -i $SNAPCRAFT_PART_INSTALL/aws
+      VER_SYM=$(readlink -f $SNAPCRAFT_PART_INSTALL/aws/v2/current)
+      VER=$(basename $VER_SYM)
+      mkdir -p $SNAPCRAFT_PART_INSTALL/bin
+      ln -s ../aws/v2/$VER/bin/aws $SNAPCRAFT_PART_INSTALL/bin/
+      ln -s ../aws/v2/$VER/bin/aws_completer $SNAPCRAFT_PART_INSTALL/bin/
+      rm $SNAPCRAFT_PART_INSTALL/aws/v2/current
+      snapcraftctl build
+      snapcraftctl set-version $VER
+    stage-packages:
+      - groff-base # Required for help
+  completion:
+    plugin: dump
+    source: completion
+    organize:
+      aws_completion: bin/aws_completion
+    after:
+      - aws
