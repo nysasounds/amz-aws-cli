@@ -18,8 +18,6 @@ adopt-info: aws
 apps:
   aws:
     command: bin/aws
-    aliases:
-      - amz-aws-cli
     environment:
       GROFF_FONT_PATH: "$SNAP/usr/share/groff/current/font"
       GROFF_TMAC_PATH: "$SNAP/usr/share/groff/current/tmac"
