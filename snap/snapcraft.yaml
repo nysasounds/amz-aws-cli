@@ -33,7 +33,7 @@ apps:
 plugs:
   dot-aws:
     interface: personal-files
-    write:
+    read:
     - $HOME/.aws
 
 parts:
