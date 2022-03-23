@@ -1,0 +1,13 @@
+#!/bin/bash
+
+set -ue
+
+# If the snap does not have a current .aws config #
+if [ ! -d "${SNAP_USER_DATA}/.aws" ] ; then
+    # ..and an .aws directory exists [ default `config` locaation ] #
+    if [ -d "${SNAP_REAL_HOME}/.aws" ] ; then
+        # Copy it into the snaps home as a starting config #
+        echo "Seeding snap AWS config from ${SNAP_REAL_HOME}/.aws"
+        cp -a "${SNAP_REAL_HOME}/.aws" "${SNAP_USER_DATA}/.aws"
+    fi
+fi
