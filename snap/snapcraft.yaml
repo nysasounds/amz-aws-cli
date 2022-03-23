@@ -27,11 +27,11 @@ apps:
     plugs:
       - network
       - network-bind
-      - home-aws-conf
+      - dot-aws
       - home
 
 plugs:
-  home-aws-conf:
+  dot-aws:
     interface: personal-files
     write:
     - $HOME/.aws
