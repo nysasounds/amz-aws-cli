@@ -1,1 +1,1 @@
-complete -C $SNAP/bin/aws_completer amz-aws-cli.aws
+complete -C $SNAP/bin/aws_completer aws amz-aws-cli amz-aws-cli.aws amz-aws-cli.amz-aws-cli

@@ -16,7 +16,7 @@ grade: stable
 adopt-info: aws
 
 apps:
-  aws:
+  amz-aws-cli:
     command: bin/aws
     environment:
       GROFF_FONT_PATH: "$SNAP/usr/share/groff/current/font"
