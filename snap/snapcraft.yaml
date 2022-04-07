@@ -30,6 +30,11 @@ apps:
       - dot-aws
       - home
 
+hooks:
+  install:
+    plugs:
+      - dot-aws
+
 plugs:
   dot-aws:
     interface: personal-files
