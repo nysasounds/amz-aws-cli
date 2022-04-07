@@ -2,6 +2,9 @@
 
 set -uxe
 
+LOG="${SNAP_COMMON}/hooks-logs/${SNAP_REVISION}/$(basename "$0").log" && mkdir -p "${LOG%/*}"
+exec &> >(tee -a "${LOG}")
+
 # If the snap does not have a current .aws config #
 if [ ! -d "${SNAP_USER_DATA}/.aws" ] ; then
     # ..and an .aws directory exists [ default `config` locaation ] #
