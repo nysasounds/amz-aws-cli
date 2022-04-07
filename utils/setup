@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -ue
+set -u
 
 # If the snap does not have a current .aws config #
 if [ ! -d "${SNAP_USER_DATA}/.aws" ] ; then
