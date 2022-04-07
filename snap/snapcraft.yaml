@@ -19,6 +19,8 @@ architectures:
 
 apps:
   amz-aws-cli:
+    command-chain:
+      - bin/setup
     command: bin/aws
     environment:
       GROFF_FONT_PATH: "$SNAP/usr/share/groff/current/font"
@@ -29,11 +31,6 @@ apps:
       - network-bind
       - dot-aws
       - home
-
-hooks:
-  install:
-    plugs:
-      - dot-aws
 
 plugs:
   dot-aws:
@@ -58,10 +55,11 @@ parts:
       snapcraftctl set-version $VER
     stage-packages:
       - groff-base # Required for help
-  completion:
+  utils:
     plugin: dump
-    source: completion
+    source: utils
     organize:
       aws_completion.bash: bin/aws_completion.bash
+      setup: bin/setup
     after:
       - aws
