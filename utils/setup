@@ -1,4 +1,6 @@
 #!/bin/bash
+# This simply sets up your .aws dir the first time you use it #
+# If no .aws config exists, it will copy it from the users home dir if it can #
 
 set -u
 
@@ -11,3 +13,5 @@ if [ ! -d "${SNAP_USER_DATA}/.aws" ] ; then
         cp -a "${SNAP_REAL_HOME}/.aws" "${SNAP_USER_DATA}/.aws"
     fi
 fi
+
+exec $@
