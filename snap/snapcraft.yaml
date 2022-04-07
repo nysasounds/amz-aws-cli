@@ -23,7 +23,7 @@ apps:
     environment:
       GROFF_FONT_PATH: "$SNAP/usr/share/groff/current/font"
       GROFF_TMAC_PATH: "$SNAP/usr/share/groff/current/tmac"
-    completer: bin/aws_completion
+    completer: bin/aws_completion.bash
     plugs:
       - network
       - network-bind
@@ -57,6 +57,6 @@ parts:
     plugin: dump
     source: completion
     organize:
-      aws_completion: bin/aws_completion
+      aws_completion.bash: bin/aws_completion.bash
     after:
       - aws
