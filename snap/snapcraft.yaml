@@ -19,8 +19,8 @@ architectures:
 
 apps:
   amz-aws-cli:
-    command-chain:
-      - bin/setup
+    #command-chain:
+    #  - bin/setup
     command: bin/aws
     environment:
       GROFF_FONT_PATH: "$SNAP/usr/share/groff/current/font"
