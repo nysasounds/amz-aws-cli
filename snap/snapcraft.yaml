@@ -42,7 +42,7 @@ plugs:
 parts:
   aws:
     plugin: nil
-    source: https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.4.13.zip
+    source: https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.5.6.zip
     source-type: zip
     override-build: |
       $SNAPCRAFT_PART_BUILD/aws/install -i $SNAPCRAFT_PART_INSTALL/aws
