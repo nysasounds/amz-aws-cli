@@ -11,6 +11,12 @@ description: |
   The AWS CLI v2 offers several new features including improved
   installers, new configuration options such as AWS Single Sign-On (SSO),
   and various interactive features. 
+
+  For best user experience, create an alias for this snap to the standard upstream binary name.
+  $ sudo snap alias amz-aws-cli aws
+
+  If you are migrating from other packaging of AWS CLI, you may want to migrate your existing config.
+  $ amz-aws-cli.setup
 confinement: strict
 grade: stable
 adopt-info: aws
