@@ -20,7 +20,7 @@ and various interactive features.
 Install from the global snap store
 
 ```
-snap install amz-aws-cli
+sudo snap install amz-aws-cli
 ```
 
 For best user experience, create an alias for this snap to the standard upstream binary name.
