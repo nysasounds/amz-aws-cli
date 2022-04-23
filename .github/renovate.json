@@ -17,5 +17,5 @@
       "automerge": true
     }
   ],
-  "schedule": ["every day"]
+  "schedule": ["after 6pm"]
 }
