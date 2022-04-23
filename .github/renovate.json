@@ -1,5 +1,21 @@
 {
   "extends": [
     "config:base"
-  ]
+  ],
+  "enabledManagers": ["regex"],
+  "regexManagers": [
+    {
+      "fileMatch": ["^snap/snapcraft.yaml$"],
+      "matchStrings": ["source: https://awscli.amazonaws.com/awscli-exe-linux-x86_64-(?<currentValue>.*?).zip\\n"],
+      "depNameTemplate": "aws/aws-cli",
+      "datasourceTemplate": "github-tags"
+    }
+  ],
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["patch", "pin", "digest"],
+      "automerge": true
+    }
+  ],
+  "schedule": ["every day"]
 }
