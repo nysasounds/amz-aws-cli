@@ -1,0 +1,23 @@
+#!/bin/bash
+
+set -eu
+
+AWLCLI_UNVERSIONED_URL="https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip"
+AWLCLI_ZIP="${AWLCLI_UNVERSIONED_URL##*/}"
+
+TMPDIR=$(mktemp -d -p /tmp aacver.XXXXXXXXXXXX)
+
+cleanup() {
+    rm -fr "${TMPDIR}"
+}
+
+get_version() {
+    cd "${TMPDIR}"
+    wget -q "${AWLCLI_UNVERSIONED_URL}"
+    unzip -q "${AWLCLI_ZIP}"
+    ./aws/dist/aws --version | cut -d ' ' -f 1 | cut -d '/' -f 2
+}
+
+trap cleanup EXIT HUP INT QUIT TERM
+
+get_version
