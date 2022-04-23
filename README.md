@@ -19,13 +19,13 @@ and various interactive features.
 
 [![Get it from the Snap Store](https://snapcraft.io/static/images/badges/en/snap-store-white.svg)](https://snapcraft.io/amz-aws-cli)
 
+[![amz-aws-cli](https://snapcraft.io/amz-aws-cli/badge.svg)](https://snapcraft.io/amz-aws-cli)
+
 Install from the global snap store
 
 ```
 sudo snap install amz-aws-cli
 ```
-
-[![amz-aws-cli](https://snapcraft.io/amz-aws-cli/badge.svg)](https://snapcraft.io/amz-aws-cli)
 
 ## Configure
 
