@@ -25,6 +25,10 @@ Install from the global snap store
 sudo snap install amz-aws-cli
 ```
 
+[![amz-aws-cli](https://snapcraft.io/amz-aws-cli/badge.svg)](https://snapcraft.io/amz-aws-cli)
+
+## Configure
+
 For best user experience, create an alias for this snap to the standard upstream binary name.
 ```
 sudo snap alias amz-aws-cli aws
