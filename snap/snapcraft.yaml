@@ -22,6 +22,8 @@ grade: stable
 adopt-info: aws
 architectures:
   - amd64
+source-code: https://github.com/nysasounds/amz-aws-cli
+issues: https://github.com/nysasounds/amz-aws-cli/issues
 
 apps:
   amz-aws-cli:
