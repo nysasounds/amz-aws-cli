@@ -38,3 +38,9 @@ If you are migrating from other packaging of AWS CLI, you may want to migrate yo
 ```
 amz-aws-cli.setup
 ```
+
+If you find bash completion is not working, you can probably get it working by install the core snap.
+This seems to be a bug in the completion implementation.
+```
+$ snap install core
+```
