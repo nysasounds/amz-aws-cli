@@ -40,6 +40,7 @@ apps:
       - network
       - network-bind
       - home
+      - desktop
   setup:
     command: bin/setup
     plugs:
