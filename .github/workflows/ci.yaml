@@ -4,7 +4,6 @@ run-name: ${{ github.actor }} CI
 
 on:
   pull_request:
-  push:
 
 defaults:
   run:
