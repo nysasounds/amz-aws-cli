@@ -58,6 +58,7 @@ parts:
     source: https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.11.23.zip
     source-type: zip
     override-build: |
+      exit 1
       $SNAPCRAFT_PART_BUILD/aws/install -i $SNAPCRAFT_PART_INSTALL/aws
       VER_SYM=$(readlink -f $SNAPCRAFT_PART_INSTALL/aws/v2/current)
       VER=$(basename $VER_SYM)
