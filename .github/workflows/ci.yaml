@@ -1,6 +1,6 @@
 name: CI
 
-run-name: CI - run on ${{ github.actor }}
+run-name: ${{ github.actor }} CI
 
 on:
   pull_request:
