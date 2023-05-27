@@ -55,19 +55,24 @@ jobs:
 
       - name: Install
         run: |
+          # Install #
           sudo snap install --dangerous ./amz-aws-cli.snap
 
+          # Connections #
           sudo snap connect amz-aws-cli:desktop :desktop
           sudo snap connect amz-aws-cli:home :home
           sudo snap connect amz-aws-cli:network :network
           sudo snap connect amz-aws-cli:network-bind :network-bind
           sudo snap connect amz-aws-cli:dot-aws :personal-files
 
+          # Alias #
+          sudo snap alias amz-aws-cli aws
+
       - run: echo "🍏 Job status ${{ job.status }}"
 
       - name: Verify
         run: |
-          amz-aws-cli --version
+          aws --version
 
       - run: echo "🍏 Job status ${{ job.status }}"
 
