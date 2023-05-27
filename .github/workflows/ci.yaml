@@ -64,3 +64,14 @@ jobs:
           amz-aws-cli --version
 
       - run: echo "🍏 Job status ${{ job.status }}"
+
+      - name: Test Setup
+        run: |
+          mkdir ~/.aws
+          echo "#aws-cli config test: $(date -R)" > ~/.aws/config
+          touch ~/.aws/foo
+          amz-aws-cli.setup
+          diff -ur ~/.aws ~/snap/amz-aws-cli/current/.aws
+          echo "Setup ok"
+
+      - run: echo "🍏 Job status ${{ job.status }}"
