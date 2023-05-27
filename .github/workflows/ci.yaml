@@ -57,6 +57,12 @@ jobs:
         run: |
           sudo snap install --dangerous ./amz-aws-cli.snap
 
+          sudo snap connect amz-aws-cli:desktop :desktop
+          sudo snap connect amz-aws-cli:home :home
+          sudo snap connect amz-aws-cli:network :network
+          sudo snap connect amz-aws-cli:network-bind :network-bind
+          sudo snap connect amz-aws-cli:dot-aws :personal-files
+
       - run: echo "🍏 Job status ${{ job.status }}"
 
       - name: Verify
