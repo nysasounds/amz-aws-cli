@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - run: echo "🎉 Event triggered by ${{ github.event_name }}"
-      - run: echo "🐧 Job running on ditro ${{ runner.os }}"
+      - run: echo "🐧 Job running on distro ${{ runner.os }}"
       - run: echo "🔎 Running from repo ${{ github.repository }} on ref ${{ github.ref }}"
 
       - name: Check Out
