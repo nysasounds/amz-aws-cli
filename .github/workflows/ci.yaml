@@ -1,0 +1,48 @@
+name: CI
+
+run-name: CI - run on ${{ github.actor }}
+
+on:
+  pull_request:
+  push:
+
+defaults:
+  run:
+    shell: 'bash -Eeuo pipefail -x {0}'
+
+jobs:
+  smoke-test:
+    name: Snap
+    runs-on: ubuntu-22.04
+    steps:
+      - run: echo "🎉 Event triggered by ${{ github.event_name }}"
+      - run: echo "🐧 Job running on ditro ${{ runner.os }}"
+      - run: echo "🔎 Running from repo ${{ github.repository }} on ref ${{ github.ref }}"
+
+      - name: Check Out
+        uses: actions/checkout@v3
+
+      - name: Build
+        # https://github.com/snapcore/action-build/releases
+        uses: snapcore/action-build@v1
+        with:
+          snapcraft-args: snap --output amz-aws-cli.snap
+      - run: echo "🍏 Job status ${{ job.status }}"
+
+      - name: Upload
+        if: github.repository == 'nysasounds/amz-aws-cli'
+        uses: actions/upload-artifact@v3
+        with:
+          name: amz-aws-cli.snap
+          path: amz-aws-cli.snap
+      - run: echo "🍏 Job status ${{ job.status }}"
+
+      - name: Install
+        run: |
+          sudo snap install --dangerous ./amz-aws-cli.snap
+      - run: echo "🍏 Job status ${{ job.status }}"
+
+      - name: Verify
+        run: |
+          amz-aws-cli --version
+      - run: echo "🍏 Job status ${{ job.status }}"
