@@ -22,9 +22,14 @@ jobs:
       - name: Check Out
         uses: actions/checkout@v3
 
+      - name: Debug
+        run: |
+          pwd
+          ls -al
 
-  build:
+  snap:
     name: Build
+    needs: setup
     runs-on: ubuntu-22.04
     steps:
       - name: Build
@@ -40,6 +45,17 @@ jobs:
         with:
           name: amz-aws-cli.snap
           path: amz-aws-cli.snap
+      - run: echo "🍏 Job status ${{ job.status }}"
+
+  test:
+    name: Test
+    runs-on: ubuntu-22.04
+    needs: snap
+    steps:
+      - name: Download
+        uses: actions/download-artifact@v3
+        with:
+          name: amz-aws-cli.snap
       - run: echo "🍏 Job status ${{ job.status }}"
 
       - name: Install
