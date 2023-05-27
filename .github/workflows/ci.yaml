@@ -17,7 +17,7 @@ jobs:
     steps:
       - run: echo "🎉 Event triggered by ${{ github.event_name }}"
       - run: echo "🐧 Job running on distro ${{ runner.os }}"
-      - run: echo "🔎 Running from repo ${{ github.repository }} on ref ${{ github.ref }}"
+      - run: echo "🔎 Running on repo ${{ github.repository }} from ${{ github.ref }}"
 
       - name: Check Out
         uses: actions/checkout@v3
