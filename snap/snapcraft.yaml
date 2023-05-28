@@ -1,5 +1,5 @@
 name: amz-aws-cli
-base: core20
+base: core22
 summary: Universal Command Line Interface for Amazon Web Services
 description: |
   Universal Command Line Interface for Amazon Web Services
@@ -58,15 +58,15 @@ parts:
     source: https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.11.23.zip
     source-type: zip
     override-build: |
-      $SNAPCRAFT_PART_BUILD/aws/install -i $SNAPCRAFT_PART_INSTALL/aws
-      VER_SYM=$(readlink -f $SNAPCRAFT_PART_INSTALL/aws/v2/current)
+      $CRAFT_PART_BUILD/aws/install -i $CRAFT_PART_INSTALL/aws
+      VER_SYM=$(readlink -f $CRAFT_PART_INSTALL/aws/v2/current)
       VER=$(basename $VER_SYM)
-      mkdir -p $SNAPCRAFT_PART_INSTALL/bin
-      ln -s ../aws/v2/$VER/bin/aws $SNAPCRAFT_PART_INSTALL/bin/
-      ln -s ../aws/v2/$VER/bin/aws_completer $SNAPCRAFT_PART_INSTALL/bin/
-      rm $SNAPCRAFT_PART_INSTALL/aws/v2/current
-      snapcraftctl build
-      snapcraftctl set-version $VER
+      mkdir -p $CRAFT_PART_INSTALL/bin
+      ln -s ../aws/v2/$VER/bin/aws $CRAFT_PART_INSTALL/bin/
+      ln -s ../aws/v2/$VER/bin/aws_completer $CRAFT_PART_INSTALL/bin/
+      rm $CRAFT_PART_INSTALL/aws/v2/current
+      craftctl default
+      craftctl set version=$VER
     stage-packages:
       - groff-base # Required for help
   utils:
