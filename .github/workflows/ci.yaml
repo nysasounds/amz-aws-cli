@@ -69,19 +69,74 @@ jobs:
 
       - run: echo "🍏 Job status ${{ job.status }}"
 
-      - name: Verify
+      - name: Basic Verify
         run: |
           aws --version
 
       - run: echo "🍏 Job status ${{ job.status }}"
 
-      - name: Test Setup
+      - name: Snap Setup
         run: |
+          # Create some files for setup to copy #
           mkdir ~/.aws
           echo "#aws-cli config test: $(date -R)" > ~/.aws/config
           touch ~/.aws/foo
+
+          # Run setup #
           amz-aws-cli.setup
+
+          # Check #
           diff -ur ~/.aws ~/snap/amz-aws-cli/current/.aws
           echo "Setup ok"
+
+          # Cleanup #
+          rm -f ~/snap/amz-aws-cli/current/.aws/config
+          rm -f ~/snap/amz-aws-cli/current/.aws/foo
+
+      - name: Configure
+        run: |
+          # Config data #
+          REGION="us-east-2"
+          OUTPUT="json"
+          ACCESS_KEY="AKIAIOSFODNN7EXAMPLE"
+          SECRET_KEY="wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
+
+          # Create templates for validation #
+          cat << END > config.template
+          [default]
+          region = ${REGION}
+          output = ${OUTPUT}
+          [profile test]
+          region = ${REGION}
+          output = ${OUTPUT}
+          END
+
+          cat << END > credentials.template
+          [default]
+          aws_access_key_id = ${ACCESS_KEY}
+          aws_secret_access_key = ${SECRET_KEY}
+          [test]
+          aws_access_key_id = ${ACCESS_KEY}
+          aws_secret_access_key = ${SECRET_KEY}
+          END
+
+          # Configure #
+          aws configure set region "${REGION}"
+          aws configure set output "${OUTPUT}"
+          aws configure set aws_access_key_id "${ACCESS_KEY}"
+          aws configure set aws_secret_access_key "${SECRET_KEY}"
+          aws --profile test configure set region "${REGION}"
+          aws --profile test configure set output "${OUTPUT}"
+          aws --profile test configure set aws_access_key_id "${ACCESS_KEY}"
+          aws --profile test configure set aws_secret_access_key "${SECRET_KEY}"
+
+          aws configure list
+          aws --profile test configure list
+
+          # Check #
+          diff -u config.template ~/snap/amz-aws-cli/current/.aws/config 
+          diff -u credentials.template ~/snap/amz-aws-cli/current/.aws/credentials 
+
+          echo "Configure ok"
 
       - run: echo "🍏 Job status ${{ job.status }}"
