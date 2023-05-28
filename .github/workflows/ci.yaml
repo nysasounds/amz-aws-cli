@@ -95,11 +95,13 @@ jobs:
 
       - name: Configure
         run: |
+          # Config data #
           REGION="us-east-2"
           OUTPUT="json"
           ACCESS_KEY="AKIAIOSFODNN7EXAMPLE"
           SECRET_KEY="wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
 
+          # Create templates for validation #
           cat << END > config.template
           [default]
           region = ${REGION}
@@ -118,9 +120,7 @@ jobs:
           aws_secret_access_key = ${SECRET_KEY}
           END
 
-          cat config.template
-          cat credentials.template
-
+          # Configure #
           aws configure set region "${REGION}"
           aws configure set output "${OUTPUT}"
           aws configure set aws_access_key_id "${ACCESS_KEY}"
@@ -133,6 +133,7 @@ jobs:
           aws configure list
           aws --profile test configure list
 
+          # Check #
           diff -u config.template ~/snap/amz-aws-cli/current/.aws/config 
           diff -u credentials.template ~/snap/amz-aws-cli/current/.aws/credentials 
 
