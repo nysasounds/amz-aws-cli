@@ -77,13 +77,21 @@ jobs:
 
       - name: Snap Setup
         run: |
+          # Create some files for setup to copy #
           mkdir ~/.aws
           echo "#aws-cli config test: $(date -R)" > ~/.aws/config
           touch ~/.aws/foo
+
+          # Run setup #
           amz-aws-cli.setup
+
+          # Check #
           diff -ur ~/.aws ~/snap/amz-aws-cli/current/.aws
           echo "Setup ok"
+
+          # Cleanup #
           rm -f ~/snap/amz-aws-cli/current/.aws/config
+          rm -f ~/snap/amz-aws-cli/current/.aws/foo
 
       - name: Configure
         run: |
