@@ -1,8 +1,11 @@
 name: amz-aws-cli
 base: core22
-summary: Universal Command Line Interface for Amazon Web Services
+summary: Universal Command Line Interface for Amazon Web Services - strictly confined
 description: |
   Universal Command Line Interface for Amazon Web Services
+
+  This is a strictly confinded version, for enhanced security.
+
   The AWS Command Line Interface (CLI) is a unified tool to
   manage your AWS services. With just one tool to download
   and configure, you can control multiple AWS services from
