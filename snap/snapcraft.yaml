@@ -4,7 +4,7 @@ summary: Universal Command Line Interface for Amazon Web Services - strictly con
 description: |
   Universal Command Line Interface for Amazon Web Services
 
-  This is a strictly confinded version, for enhanced security.
+  This is a strictly confined version, for enhanced security.
 
   The AWS Command Line Interface (CLI) is a unified tool to
   manage your AWS services. With just one tool to download
