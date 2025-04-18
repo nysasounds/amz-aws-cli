@@ -20,7 +20,7 @@ jobs:
       - run: echo "🔎 Running on repo ${{ github.repository }} from ${{ github.ref }}"
 
       - name: Check Out
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Build
         # https://github.com/snapcore/action-build/releases
@@ -32,7 +32,7 @@ jobs:
 
       - name: Upload
         if: github.repository == 'nysasounds/amz-aws-cli'
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: amz-aws-cli.snap
           path: amz-aws-cli.snap
@@ -46,7 +46,7 @@ jobs:
     steps:
 
       - name: Download
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: amz-aws-cli.snap
 
