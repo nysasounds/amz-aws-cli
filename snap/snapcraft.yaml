@@ -58,7 +58,7 @@ plugs:
 parts:
   aws:
     plugin: nil
-    source: https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.31.13.zip
+    source: https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.31.18.zip
     source-type: zip
     override-build: |
       $CRAFT_PART_BUILD/aws/install -i $CRAFT_PART_INSTALL/aws
