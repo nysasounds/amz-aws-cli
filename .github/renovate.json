@@ -1,21 +1,35 @@
 {
   "extends": [
-    "config:base"
+    "config:recommended"
   ],
-  "enabledManagers": ["regex"],
-  "regexManagers": [
+  "enabledManagers": [
+    "custom.regex"
+  ],
+  "customManagers": [
     {
-      "fileMatch": ["^snap/snapcraft.yaml$"],
-      "matchStrings": ["source: https://awscli.amazonaws.com/awscli-exe-linux-x86_64-(?<currentValue>.*?).zip\\n"],
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/^snap/snapcraft.yaml$/"
+      ],
+      "matchStrings": [
+        "source: https://awscli.amazonaws.com/awscli-exe-linux-x86_64-(?<currentValue>.*?).zip\\n"
+      ],
       "depNameTemplate": "aws/aws-cli",
       "datasourceTemplate": "github-tags"
     }
   ],
   "packageRules": [
     {
-      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+      "matchUpdateTypes": [
+        "minor",
+        "patch",
+        "pin",
+        "digest"
+      ],
       "automerge": true
     }
   ],
-  "schedule": ["after 6pm"]
+  "schedule": [
+    "after 6pm"
+  ]
 }
