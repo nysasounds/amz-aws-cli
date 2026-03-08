@@ -1,5 +1,5 @@
 name: amz-aws-cli
-base: core22
+base: core24
 summary: Universal Command Line Interface for Amazon Web Services - strictly confined
 description: |
   Universal Command Line Interface for Amazon Web Services
@@ -27,8 +27,8 @@ description: |
 confinement: strict
 grade: stable
 adopt-info: aws
-architectures:
-  - amd64
+platforms:
+  amd64:
 source-code: https://github.com/nysasounds/amz-aws-cli
 issues: https://github.com/nysasounds/amz-aws-cli/issues
 
