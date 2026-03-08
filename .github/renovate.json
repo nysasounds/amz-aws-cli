@@ -13,7 +13,8 @@
         "/^snap/snapcraft.yaml$/"
       ],
       "matchStrings": [
-        "source: https://awscli.amazonaws.com/awscli-exe-linux-x86_64-(?<currentValue>.*?).zip\\n"
+        "- to amd64: https://awscli.amazonaws.com/awscli-exe-linux-x86_64-(?<currentValue>.*?).zip\\n",
+        "- to arm64: https://awscli.amazonaws.com/awscli-exe-linux-aarch64-(?<currentValue>.*?).zip\\n"
       ],
       "depNameTemplate": "aws/aws-cli",
       "datasourceTemplate": "github-tags"
