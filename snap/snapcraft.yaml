@@ -29,6 +29,7 @@ grade: stable
 adopt-info: aws
 platforms:
   amd64:
+  arm64:
 source-code: https://github.com/nysasounds/amz-aws-cli
 issues: https://github.com/nysasounds/amz-aws-cli/issues
 
@@ -58,7 +59,9 @@ plugs:
 parts:
   aws:
     plugin: nil
-    source: https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.34.4.zip
+    source:
+      - to amd64: https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.34.4.zip
+      - to arm64: https://awscli.amazonaws.com/awscli-exe-linux-aarch64-2.34.4.zip
     source-type: zip
     override-build: |
       $CRAFT_PART_BUILD/aws/install -i $CRAFT_PART_INSTALL/aws
