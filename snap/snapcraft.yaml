@@ -60,8 +60,8 @@ parts:
   aws:
     plugin: nil
     source:
-      - to amd64: https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.34.60.zip
-      - to arm64: https://awscli.amazonaws.com/awscli-exe-linux-aarch64-2.34.60.zip
+      - to amd64: https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.34.61.zip
+      - to arm64: https://awscli.amazonaws.com/awscli-exe-linux-aarch64-2.34.61.zip
     source-type: zip
     override-build: |
       $CRAFT_PART_BUILD/aws/install -i $CRAFT_PART_INSTALL/aws
