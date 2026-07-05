@@ -26,7 +26,7 @@ jobs:
         # https://github.com/snapcore/action-build/releases
         uses: snapcore/action-build@v1
         with:
-          snapcraft-args: snap --output amz-aws-cli.snap
+          snapcraft-args: pack --verbosity=debug --output amz-aws-cli.snap
 
       - run: echo "🍏 Job status ${{ job.status }}"
 
